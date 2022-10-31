@@ -7,24 +7,27 @@
         <div class="col-md-5 product-image text-center">
             <img class="img-thumbnail" src="{{product.product_image.url}}" alt="">
         </div>
-        <div class="col-md-5 product-text custome-text-resize">
+        <div class="col-md-5 product-text custome-text-resize row">
             <h4 class=" product-heading">{{product.brand}}</h4>
             <h6 class="h6 mt-3">Product Description</h6>
-              <p>{{product.title}}</p>
+            <p>{{product.title}}</p>
             <hr>
-            <p class="h5 text-dark">Current Price - Rs.{{product.discounted_price}}<span class=" text-decoration-line-through text-danger ">Rs.{{product.actual_price}}</span>
+            <p class="h5 text-dark">Current Price - Rs.{{product.discounted_price}}<span
+                    class=" text-decoration-line-through text-danger ">Rs.{{product.actual_price}}</span>
             </p>
-           <a href="{%url 'add_to_cart' product.id %}"><button class="btn custom-button btn-primary mx-3 bg-danger">ADD TO CART <i class="fa fa-shopping-cart"></i></button></a>
-            <button class="btn custom-button btn-primary mx-3"> BUY NOW</button>
-             <p class="h6 mt-3" >Available Offers</p>
-             <ol class="custom-text-resize">
-                 <li>Bank Offer Unlimited Cashback On SBI Credit Card</li>
-                 <li>Get 50% Discount On Your 1st Order</li>
-                 <li>Get Upto 85% Discount On Home Appliances</li>
-                 <li>Bank Offer10% off on SBI Credit Card, up to ₹1,750, on orders of ₹5000 and aboveT&C</li>
+            <div class="col-5"><a href="{%url 'add_to_cart' product.id %}"><button  class="btn w-100 h-100  custom-button btn-primary mx-3 bg-danger">ADD
+                TO CART <i class="fa fa-shopping-cart"></i></button></a></div>
+            <div class="col-5"><button class="btn w-100 h-100 custom-button btn-primary mx-3"> BUY NOW</button></div>
+            <p class="h6 mt-3">Available Offers</p>
+            <ol class="custom-text-resize">
+                <li>Bank Offer Unlimited Cashback On SBI Credit Card</li>
+                <li>Get 50% Discount On Your 1st Order</li>
+                <li>Get Upto 85% Discount On Home Appliances</li>
+                <li>Bank Offer10% off on SBI Credit Card, up to ₹1,750, on orders of ₹5000 and aboveT&C</li>
 
-                   <li> Bank Offer10% off on SBI Credit Card EMI Transactions, up to ₹2,250, on orders of ₹5000 and aboveT&C</li>
-             </ol>
+                <li> Bank Offer10% off on SBI Credit Card EMI Transactions, up to ₹2,250, on orders of ₹5000 and
+                    aboveT&C</li>
+            </ol>
 
 
 

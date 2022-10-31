@@ -44,6 +44,9 @@ body{
 .search-bar{
     font-size: small;
 }
+.navbar-toggler:focus{
+   box-shadow: none;
+}
 
 
 .carousel-inner > div > img{
