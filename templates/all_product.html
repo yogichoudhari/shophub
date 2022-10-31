@@ -1,0 +1,60 @@
+{%extends 'home.html'%}
+{%load static%}
+{%block title%}
+shophub | All product available
+{%endblock title%}
+
+{%block product_content%}
+<div class="container-fluid mt-5">
+    <div class="row all-product-container justify-content-center">
+        <div class="col-md-2 product-filter-container ">
+            <div class="row mb-3">
+                <div class="col h5 text-decoration-underline">Filter Product</div>
+            </div>
+            <div class="row">
+                    <div class="col-md-12 col-3"> <a href="{%url 'all_product'%}"><button class="btn h-75 w-100 mb-2 btn-sm btn-primary">All Category</button>
+                    </a></div>
+                    <div class="col-md-12  col-3"><a href="{%url 'mens_wear'%}"><button class="btn h-75 w-100 mb-2 btn-sm btn-primary">Men's Wear</button>
+                    </a></div>
+                    <div class="col-md-12 col-3"><a href="{%url 'womens_wear'%}"><button class="btn h-75 w-100 mb-2 btn-sm btn-primary">Women's Wear</button>
+                    </a></div>
+                    <div class="col-md-12 col-3"><a href="{%url 'home_appliances'%}"><button class="btn h-75 w-100 mb-2 btn-sm btn-primary">Home Appliances</button>
+                    </a>
+            </div>
+            </div>
+            
+           
+           
+        </div>
+        <div class="col-md-9 product-list-container ">
+            <div class="row  justify-content-around ">
+               {% for product in products%}
+                <div class=" product-card mb-2">
+                  <a href="{%url 'product_desc' product.id%}"><div class="all-product-image text-center">
+                          <img class="" src="{{product.product_image.url}}" width="auto" height="16rem" alt="">
+                      </div></a>
+                      <div class="brand-name fw-bold ">{{product.brand}}</div>
+                      <div class="title text-wrap small">{{product.title}}</div>
+                      <div class="title"><small>
+                        {%if product.in_stock%}
+                        In-Stock   
+                         {%else%} 
+                         Out Of Stock   
+                         {%endif%}               
+                        </small></div>
+                      <div class="row">
+                        <div class="col-6 Price text-primary">Rs.{{product.discounted_price}} <small class="text-decoration-line-through">Rs.{{product.actual_price}}</small></div>
+                          <div class="col-6 justify-content-end"><button class="btn btn-sm btn-dark"><i class=" fa fa-shopping-cart ">Add</i></button></div>
+                   
+                      </div>
+                  </div>
+                
+                  {%endfor%}
+               
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock product_content%}

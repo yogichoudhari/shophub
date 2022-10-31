@@ -1,0 +1,23 @@
+{%extends 'signup_form.html'%}
+{%load static%}
+{%block form_content%}
+<h4 class=" text-decoration-underline text-center ">Login</h4>
+{% if messages %}
+{% for message in messages %}
+<p class="p-1 bg-info text-center small">{{message}}</p>
+{%endfor%}
+{% endif%}
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group custom-text-resize">
+        <i class="fa fa-user"></i>
+        <label for="email">Username</label>
+        <input placeholder="Enter Username Here " type="text" id="email" name="username" class="form-control">
+        <i class="fa fa-key"></i>
+        <label for="password">Password</label>
+        <input placeholder="Enter Password " type="password" name="password" id="password" class="form-control">
+        <input type="submit" class="btn btn-light mt-2 signup-btn w-100" value="Login ">
+        <a href="{%url 'password_reset'%}"><p class=" fw-bold text-primary mt-1">Forgot Password?</p></a>
+    </div>
+</form>
+{%endblock form_content%}

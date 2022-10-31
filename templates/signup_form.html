@@ -1,0 +1,54 @@
+{%extends 'home.html'%}
+{%load static%}
+{%block product_content%}
+<div class="container-fluid  h-100 ">
+    
+        <div class="row signup-page-row align-content-center  ">
+            <div class="col-md-6 d-none d-md-block  ">
+                <div class="signup-form-image w-50"><img src="{%static 'images/signup.png'%}" alt=""></div>
+            </div>
+            <div class="col-md-6 align-content-center">
+                <div class=" w-75 m-auto signup-form-container mt-5  ">
+                    {%block form_content%}
+                     <h4 class=" text-decoration-underline text-center ">Sign Up Now</h4>
+                     {% if messages %}
+                     {% for message in messages %}
+                     <p class="p-1 bg-info text-center text-light small">{{message}}</p>
+                     {%endfor%}
+                     {% endif%}
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="form-group custom-text-resize">
+                           
+                            <i class="fa fa-user"></i>
+                           <label for="fname">Username</label>
+                             <input placeholder="Enter Your Full Name " name="username" type="text" id="full_name" class="form-control signup-form-input">
+                             <i class=" fa fa-envelope "></i>
+                             <label for="email">Email</label>
+                             <input placeholder="Enter Your Email " name="email" type="email" id="email" class="form-control signup-form-input">
+                             <i class=" fa fa-phone "></i>
+                             <label for="email">phone</label>
+                             <input placeholder="Enter Your 10 digit Mobile Number " name="phone" type="text" id="phone" class="form-control signup-form-input">
+
+                             <i class="fa fa-key"></i>
+                             <label for="password">Password</label>
+                             <input placeholder="Enter Password " name="password1" type="password" id="password" class="form-control signup-form-input">
+                             <i class="fa fa-key"></i>
+                             <label for="password2">Confirm Password</label>
+                             <input placeholder="Re-Enter Password " name="password2" type="password" id="password2" class="form-control signup-form-input"> 
+                             <p class="small">Password should be 6-20 charchters and alphanumeric</p>
+                            <input type="submit" class="btn btn-light mt-2 w-100  signup-btn" value="Sign Up ">
+                            
+                        </div>
+                    </form>
+                    <div class="row text-center mt-4">
+                     <div class="col-12"><p class="text-primary small fw-bold">Existing User? <a href="{%url 'login'%}"><span class="text-danger text-decoration-underline fw-bold">Login Now</span></a></p></div>
+                    </div>
+                    {%endblock form_content%}
+                </div>
+            </div>
+        </div>
+    
+</div>
+{%endblock product_content%}
+

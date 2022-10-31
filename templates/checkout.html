@@ -1,0 +1,62 @@
+{%extends 'home.html'%}
+{%load static%}
+{% block product_content%}
+<div class="container mt-5">
+    <div class="row justify-content-between">
+        <div class="col-md-5 checkout-product-container">
+            <div class="row">
+                <div class="col h4 mb-2">
+                    Order Summary
+                </div>
+            </div>
+
+            <div class="row small  p-3 text-center">
+
+                <div class="col-6 align-self-center">
+                    <div class="row">
+                        <div class="col-6 align-self-center"><img style="border-radius:3px" class=""
+                                src="{%static 'images/womens_wear.png'%}" height="60vh" width="auto" alt=""></div>
+                        <div class="col-6 align-self-center fw-bold">Mens blue Dark Jeans</div>
+                    </div>
+                </div>
+                <div class="col-3 align-self-center">Quantity:2</div>
+                <div class="col-3 align-self-center">Price : Rs.300</div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-6 fw-bold">Est. Cost</div>
+                <div class="col-6 fw-bold text-end">Rs.500</div>
+            </div>
+        </div>
+        <div class="col-md-5 checkout-address">
+            <p class="h5 text-center mt-3 text-decoration-underline">Select Delivery Address</p>
+            <div class="form-group mt-4">
+                <div class="mb-3 row">
+                    <div class="col-2 align-self-center"><input class="form-check-input" type="radio" name="address" id="address" value=""
+                            aria-label="..." />
+                    </div>
+                    <div class="col-10"><label for="adderess" class="form-check-label">
+                        <h6>Yogesh Choudhari 137 slice-4 sector-d</h6>
+                        
+                    </label></div>
+                </div>
+                <hr>
+                <div class="mb-3 row">
+                    <div class="col-2 align-self-center"><input class="form-check-input" type="radio" name="address" id="address" value=""
+                            aria-label="..." />
+                    </div>
+                    <div class="col-10"><label for="adderess" class="form-check-label">
+                        <h6>Yogesh Choudhari</h6>
+                        <p>137 slice-4 sector-d</p>
+                    </label></div>
+                </div>
+                <div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{%endblock product_content%}

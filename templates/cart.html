@@ -1,0 +1,152 @@
+{%extends 'home.html'%}
+{%load static%}
+{%block title%}
+Shophub | cart
+{%endblock title%}
+{%block product_content%}
+
+
+</script>
+
+<div class="container user-select-none mt-5 mb-5">
+
+    {%if request.user.is_authenticated%}
+    <div class="row justify-content-between">
+        {%if cart%}
+        <div class="col-md-7 mb-3 cart-container p-4">
+            <div class="row text-center fw-bold">
+                <div class="col-3">#</div>
+                <div class="col-3" id="demo">Product</div>
+                <div class="col-4">Quantity</div>
+                <div class="col-2">Price</div>
+            </div>
+            <hr>
+
+            {%for products in cart%}
+            <div class="row cart-row text-center align-items-center">
+                <div class="col-3 "><img class="img-fluid img-thumbnail" src="{{products.product.product_image.url}}"
+                        alt=""></div>
+
+                <div class="col-3  small">
+                    <div class="row align-self-start">
+                        <div class="col-12">{{products.product.title}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 "><a class="del-btn " cart-product-id="{{products.id}}"><button
+                                    class="btn w-100 btn-dark btn-sm ">Remove</button></a></div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <a product-id="{{products.product.id}}" class="cart-minus m-2 "><i
+                            class="fa fa-minus-square "></i></a>
+                    <p class="d-inline quantity small quantity" id="quantity">{{products.quantity}}</p>
+                    <a product-id="{{products.product.id}}" class="cart-plus m-2 "><i
+                            class="fa fa-plus-square "></i></a>
+                </div>
+
+                <div class="col-2 small">Rs.{{products.product.discounted_price}}</div>
+            </div>
+            {%endfor%}
+            <hr>
+            <div class="row ">
+                <div class="col-6 fw-bold text-start ">Total</div>
+                <div class="col-6 fw-bold text-end amount">Rs.{{amount}}</div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4  small">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="row justify-content-between">
+                        <div class="col-12">
+                            <p class="fw-bold mb-2 h6">Select Product Shipping Address</p>
+                        </div>
+                    </div>
+                    {%for a in address%}
+                    <form action="/checkout" method="get">
+                    <div class="row ">
+                        <div class="col-1 align-self-center">
+                            <input class="form-check-input" type="radio"
+                                name="address" id="address{{a.id}}" checked value="{{a.id}}" aria-label="..." />
+                        </div>
+                        <div class="col-11 ">
+                            <label for="address{{a.id}}"  class="form-check-label ">
+                                {{a.name}} {{a.house_no}} {{a.street}} {{a.locality}} {{a.city}} {{a.zip_code}}
+                                {{a.state}}
+                            </label>
+                        </div>
+
+                    </div>
+               
+                    {%endfor%}
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row justify-content-between">
+                        <div class="col-12">
+                            <p class="fw-bold mb-2 h6">Total Amount Of The Purchases</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">selling Price</div>
+                        <div class="col-6 text-end s-price">Rs.{{selling_price}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">Discounted Price</div>
+                        <div class="col-6 d-price text-end">Rs.{{discounted_price}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">Saved Rupess</div>
+                        <div class="col-6 saved text-end">Rs.{{saved}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">shipping</div>
+                        <div class="col-6 shipping text-end">Rs.40</div>
+                    </div>
+                    <hr class="mb-0 ">
+                    <div class="row">
+                        <div class="col-6 fw-bold">Total</div>
+                        <div class="col-6 fw-bold text-end t-amount">Rs.{{total_amount}}</div>
+                    </div>
+                    <div class="row mt-2"><button type="submit"
+                                class="btn checkout-btn text-light w-100">Checkout</button>
+                    </div>
+                </form>
+                    
+                    <div class="row text-center">
+                        <div class="col-3"><img class="" src="{%static 'images/mastercard.png'%}"  height='50rem' alt=""></div>
+                        <div class="col-3"><img class="" src="{%static 'images/visa.png'%}" height='50rem' alt=""></div>
+                        <div class="col-3"><img class="" src="{%static 'images/paypal.png'%}" height='50rem' alt=""></div>
+                        <div class="col-3"><img class="" src="{%static 'images/upi-icon.png'%}" height='50rem' alt=""></div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {%else%}
+        <div class="col-12 text-center">
+            <img src="{%static 'images/empty-cart.png'%}" height="200vh" width="auto" alt="">
+        </div>
+        <div class="col-12 text-center">
+            <p class="h5 fst-italic text-info">Oops!Your Cart Seems Empty,Go Shop</p>
+        </div>
+        {%endif%}
+    </div>
+
+    {%else%}
+    <div class="col-12 text-center">
+        <img src="{%static 'images/empty-cart.png'%}" height="200vh" width="auto" alt="">
+    </div>
+    <div class="col-12 text-center">
+        <p class="h5 fst-italic text-info">Oops!Please Login First</p>
+        <p class="small">Login to see the items you added previously</p>
+        <a href="{%url 'login'%}"><button  class="w-25 btn btn-primary btn-sm">Log In</button></a>
+    </div>
+    {%endif%}
+</div>
+{%endblock product_content%}

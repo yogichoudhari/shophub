@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{%block title%}Welcome to ShopHub.com{%endblock title%}</title>
+  <link rel="shortcut icon" type="image/png" href="{%static 'images/bag.png'%}">
+  <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}" />
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+  <script defer src="{% static 'js/bootstrap.min.js'%}"></script>
+  <link rel="stylesheet" href="{% static 'css/main.css'%}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script defer src="{%static 'js/ajax.js'%}"></script>
+
+</head>
+
+<body>
+  <nav class="navbar main-nav navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand fa-safari " href="/"><span class="brand1"> Shop</span><span class="brand">Hub</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-arrow-down text-white toggler "></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/"><i class="fa fa-home"></i> Home</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Catagories
+            </a>
+            <ul class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{%url 'mobile'%}">Mobiles</a></li>
+              
+              <li>
+                <a class="dropdown-item" href="{%url 'mens_wear'%}">Men's Wear</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{%url 'womens_wear'%}">Women's Wear</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{%url 'all_product'%}">All Products</a>
+              </li>
+            </ul>
+          </li>
+          {% if not request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link "  aria-current="page" href="{%url 'login'%}"><i class="fa fa-user"></i>Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="{% url 'signup'%}"><i class="fa fa-sign-in"></i> Signup</a>
+          </li>
+          {% else %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false"><i class="fa fa-user"></i>
+              Hello, {{user.username}}
+            </a>
+            <ul class="dropdown-menu custom-drodown" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{%url 'profile'%}">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Your Orders</a></li>
+              
+              
+              <li>
+                <a class="dropdown-item" href="{%url 'password_change'%}">Change Password</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Change Email</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="{% url 'user_logout'%}"><i class="fa fa-sign-out"></i>Logout</a>
+          </li>
+          {%endif%}
+          
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="{% url 'cart'%}"><i class="fa fa-shopping-cart"></i>Cart</a>
+          </li>
+        </ul>
+        <form action="/search_item"  class="d-flex">
+          <input class="form-control me-2 search-bar" type="search" placeholder="Search for product, brands and more"
+            aria-label="Search" name="search_item" />
+          <button type="submit" class='border-0 bg-transparent'> <i class="fa fa-search fa-1x text-light"  ></i></button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  {% block product_content%}
+  <div class="container-fluid">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{%static 'images/shopping_image2.jpg'%}" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="offer-span">Take 35% OFF On Your First Purchase</h5>
+            <p class="offer-span">
+              This Offer Is Applicable On All The Products.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{%static 'images/shopping_image.jpg'%}" class="d-block w-100" alt="shopping image" />
+          <div class="carousel-caption d-none d-md-block text-white">
+            <h5>Discount Upto 75% On Clothings</h5>
+            <p>
+              Shop Now To Get The Grasp Of Amazing Offers
+            </p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="container  mt-5">
+    <div class="row row-container justify-content-around align-items-center text-center ">
+      <div class=" cat-col col-md-2 col-6 ">
+       <a href="{%url 'all_product'%}"><img class="img-thumbnail " src="{%static 'images/shoppin_cart.png'%}" alt=""></a> 
+        <p class="cat-text">All Products</p>
+      </div>
+      <div class=" cat-col col-md-2 col-6 ">
+        <a href="{%url 'mens_wear'%}"> <img class="img-thumbnail" src="{%static 'images/mens_wear.jpg'%}" height="" alt=""></a> 
+        <p class="cat-text">Men's Wear</p>
+      </div>
+      <div class=" cat-col col-md-2 col-6 ">
+        <a href="{%url 'mobile'%}"><img class="img-thumbnail" src="{%static 'images/mobile.webp'%}" alt=""></a> 
+        <p class="cat-text">Mobiles</p>
+      </div>
+      <div class=" cat-col col-md-2 col-6  ">
+        <a href="{%url 'home_appliances'%}"> <img class="img-thumbnail" src="{%static 'images/home_appliances.webp'%}" alt=""></a> 
+        <p class="cat-text"> Home Appliances</p>
+      </div>
+
+    </div>
+   
+
+  </div>
+  <div class="container offer-container mt-5">
+    <div class="row offer-row justify-content-around text-center  ">
+      <div class="col-md-5 mt-3">
+        <p> This Diwali Get <span class="offer-span">10% cashback</span>With Axis Bank Credit Card.
+        </p>
+      </div>
+      <div class="col-md-5 mt-3">
+        <p>Get Upto <span class="offer-span">70% OFF</span> On Home Appliances</p>
+      </div>
+    </div>
+  </div>
+  {%endblock product_content%}
+  <footer class=" position-sticky top-100" >
+    <div class="container-fluid bg-dark text-light mt-3 py-5 px-5">
+      <div class="row justify-content-between">
+        <div  class="col-md-3 website-feedback mb-2">
+          <p class="h5 border-bottom">Provide Your Feedback</p>
+          <div class="form-group custom-text-resize">
+             <label for="Name">Name</label>
+             <input class="form-control" type="text" placeholder="Enter Your Name">
+             <label for="Email">Email</label>
+             <input class="form-control" type="text" placeholder="Enter Your Email">
+             <label for="Comment">Comment</label>
+             <textarea class="form-control" placeholder="Write Down Your feedback" name="" id="comment" cols="5" rows="5"></textarea>
+              <button class="btn btn-dark border-light mt-2 type="submit">Submit</button>
+          </div>
+        </div>
+        <div class="col-md-3 custome-text-resize">
+            <p class="h6 border-bottom">About Us:</p>
+            <ul class="custom-text-resize">
+              <li>
+                Policy
+              </li>
+              <li>
+                Payment
+              </li>
+              <li>
+                Shipping
+              </li>
+            </ul>
+        </div>
+        <div class="col-md-3 custome-text-resize">
+            <p class="h6 border-bottom"> Contact us:</p>
+            <ul class="custom-text-resize">
+              <li>
+                Email @ shophubexclusive@yahoo.com
+              </li>
+              <li>
+                Customer Service - 1234567890
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row bg-dark text-light">
+      <div class="col-12 text-center">
+         <h5>Copyright&#169; 2022-Till Now</h5>
+      </div>
+    </div>
+  </footer>
+
+
+
+</body>
+
+</html>

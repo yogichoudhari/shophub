@@ -1,0 +1,1 @@
+web: gunicorn shophub.wsgi --log-file -
