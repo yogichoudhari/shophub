@@ -298,7 +298,7 @@ def verify(request,token):
         return redirect('/signup')
 def send_email_verification(email,auth_token):
     subject = 'Your Account Needs To Be Verified'
-    message = f'Hie User Please Click To The Link Verify Your Account https://myshophub.herokuapp.com//verify/{auth_token}'
+    message = f'Hie User Please Click To The Link Verify Your Account https://myshophub.herokuapp.com/verify/{auth_token}'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
     send_mail(subject,message,email_from,recipient_list)

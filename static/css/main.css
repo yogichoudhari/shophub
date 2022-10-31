@@ -187,6 +187,7 @@ body{
 }
 .form-control{
     border-radius: 1rem;
+    font-size: 0.8rem;
 }
 .btn{
     border-radius: 1rem;
