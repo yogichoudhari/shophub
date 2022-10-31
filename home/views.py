@@ -235,8 +235,9 @@ def password_success(request):
 
 def profile(request):
     user = request.user
+    customer = Customer.objects.get(user=user)
     addresses = Address.objects.filter(user=user)
-    context = {'addresses':addresses}
+    context = {'addresses':addresses,'customer':customer}
     return render(request,'profile.html',context)
 
 def signup(request):

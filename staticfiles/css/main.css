@@ -193,6 +193,15 @@ body{
     box-shadow: 1px 1px 2px 2px rgb(218, 212, 212);
     border-radius: 0.5rem;
 }
+.form-control:focus{
+    box-shadow: none;
+}
+.form-control{
+    border-radius: 1rem;
+}
+.btn{
+    border-radius: 1rem;
+}
 .product-card:hover{
     transform: scale(1.1);
     z-index: 2;

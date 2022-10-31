@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Customer(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    phone = models.CharField(max_length=10 ,default='Not Available')
+    phone = models.CharField(max_length=10 ,default='none')
     auth_token = models.CharField(max_length=300)
     is_verified = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
@@ -123,7 +123,7 @@ class PlacedOrder(models.Model):
     status = models.CharField(choices=STATUS_CHOICES,default='Pending',max_length=70)
     
     def __str__(self):
-        return self.product
+        return self.product.__str__()
     @property
     def total_price(self):
         return self.product.discounted_price*self.quantity

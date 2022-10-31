@@ -9,7 +9,7 @@
                 <div class="col-md-12 col-6">
                    
                     <div class="row text-center">
-                        <div class="col-md-12 fw-bold h5">Hello,{{user.first_name}}</div>
+                        <div class="col-md-12 fw-bold h5">Hello,{{user.username}}</div>
                      
                     </div>
                     <div class="row mb-2">
@@ -35,17 +35,17 @@
                     <div class="row">
                         <div class="col-12 text-decoration-underline h5">Profile Details</div>
                     </div>
-                    <form action="">
-
+                    <form action="/update_profile" method="post">
+                      <input type="hidden" value="{{user.id}}" >
                     .<div class="row">
                         <div class="col-md-6">
                             <label for="" class="form-label small">First Name</label>
-                            <input type="text" name="" id="" value="{{user.first_name}}" class="form-control " placeholder="" aria-describedby="helpId">
+                            <input type="text" name="" id="" value="{{customer.user.first_name}}" class="form-control " placeholder="" aria-describedby="helpId">
                             
                           </div>
                         <div class="col-md-6">
                             <label for="" class="form-label small">Last Name</label>
-                            <input type="text" name="" id="" class="form-control small" value="{{user.last_name}}" placeholder="" aria-describedby="helpId">
+                            <input type="text" name="" id="" class="form-control small" value="{{customer.user.last_name}}" placeholder="" aria-describedby="helpId">
                             
                           </div>
                       
@@ -53,14 +53,19 @@
                     .<div class="row">
                         <div class="col-md-6">
                             <label for="" class="form-label small">Email Address</label>
-                            <input type="text" name="" id="" value="{{user.email}}" class="form-control small" placeholder="" aria-describedby="helpId">
+                            <input type="text" name="" id="" value="{{customer.user.email}}" class="form-control small" placeholder="" aria-describedby="helpId">
                             
                           </div>
                         <div class="col-md-6">
                             <label for="" class="form-label small">Phone</label>
-                            <input type="text" name="phone" id="" class="form-control small" placeholder="" aria-describedby="helpId">
+                            <input type="text" name="phone" id="" value="{{customer.phone}}"  class="form-control small" placeholder="" aria-describedby="helpId">
                         </div>
                       
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn mt-2 btn-outline-primary">Update</button>
+                        </div>
                     </div>
                     
                 </form>

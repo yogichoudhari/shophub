@@ -181,6 +181,16 @@ body{
     /* height: 30rem; */
     /* background-color: #d12c57; */
 }
+.form-control:focus{
+    box-shadow: none;
+
+}
+.form-control{
+    border-radius: 1rem;
+}
+.btn{
+    border-radius: 1rem;
+}
 
 .product-card{
     height: 25rem;

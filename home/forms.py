@@ -38,9 +38,9 @@ class SignupForm(forms.Form):
                 
 #    help_text=password_validation.password_validators_help_text_html()     
 class MyPasswordChangeForm(PasswordChangeForm):
-    old_password = forms.CharField(label="Old Password",  widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'autofocus':True,  'class':'form-control'}))
-    new_password1 = forms.CharField(label="New Password",  widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class':'form-control'}))
-    new_password2 = forms.CharField(label="Confirm New Password",  widget=forms.PasswordInput(attrs={'autocomplete': 'new-password','class':'form-control'}))
+    old_password = forms.CharField(label="Old Password",  widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'autofocus':True,  'class':'form-control','placeholder':'Enter your old password'}))
+    new_password1 = forms.CharField(label="New Password",  widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class':'form-control','placeholder':'Enter new password'}))
+    new_password2 = forms.CharField(label="Confirm New Password",  widget=forms.PasswordInput(attrs={'autocomplete': 'new-password','class':'form-control','placeholder':'Re-Enter your password'}))
     def clean_new_password1(self):
         data = self.cleaned_data['new_password1']
         reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"
