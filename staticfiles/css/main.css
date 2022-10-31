@@ -191,6 +191,7 @@ body{
     /* background-color: #1f3097; */
     box-sizing: border-box;
     box-shadow: 1px 1px 2px 2px rgb(218, 212, 212);
+    border-radius: 0.5rem;
 }
 .product-card:hover{
     transform: scale(1.1);
