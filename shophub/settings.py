@@ -71,7 +71,8 @@ DATABASES = {
         'NAME': 'shophub_database' ,
         'USER' : 'shophub',
         'PASSWORD':'root',
-        'HOST':'localhost'
+        'HOST':'localhost',
+        'PORT':'5432'
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
