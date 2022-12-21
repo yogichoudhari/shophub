@@ -13,6 +13,7 @@ urlpatterns = [
     path('remove_product/',views.remove_product,name='remove_product'),
     path('checkout/',views.checkout,name='checkout'),
     path('profile/',views.profile,name='profile'),
+    # path('update_profile',views.update_profile,name='update_profile'),
     path('signup/',views.signup,name='signup'),
     path('verify/<str:token>', views.verify,name='verify'),
     path('login/',views.login,name='login'),

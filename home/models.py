@@ -9,7 +9,7 @@ class Customer(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     
 CITY_CHOICES = (
-    ("Indore", "Indore"),
+             ("Indore", "Indore"),
             ("Bhopal", "Bhopal"),
             ("Jabalpur", "Jabalpur"),
             ("Gwalior", "Gwalior"),

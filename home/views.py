@@ -4,7 +4,6 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib import messages
 import uuid
-from django.core import serializers
 from django.http import JsonResponse
 from django.contrib import auth
 from django.conf import settings
@@ -120,7 +119,6 @@ def checkout(request):
     user = request.user
     address_id = request.GET['address']
     address = Address.objects.get(id=address_id)
-    print(address)
     cart_products = Cart.objects.filter(user=user)
     for product in cart_products:
         PlacedOrder(user=user,address=address,product=product.product,quantity=product.quantity).save()
@@ -240,6 +238,7 @@ def profile(request):
     context = {'addresses':addresses,'customer':customer}
     return render(request,'profile.html',context)
 
+
 def signup(request):
     if request.user.is_authenticated is False:  
         if request.method=='POST':
@@ -286,11 +285,9 @@ def signup(request):
         return render(request,'signup_form.html',)
 def verify(request,token):
     user_obj = Customer.objects.filter(auth_token=token).first()
-    print(user_obj)
     if user_obj:
         user_obj.is_verified = True
         user_obj.save()
-        print(user_obj)
         messages.info(request,'Your Email Is Verified Please Login')
         return redirect('/login')
     else:
@@ -314,11 +311,8 @@ def login(request):
                 messages.info(request,'User Not Found')
                 return redirect('/login')
             customer_obj = Customer.objects.filter(user=user_obj).first()
-            print(customer_obj)
-            print(customer_obj.is_verified)
             if customer_obj.is_verified:
                 user = auth.authenticate(username=username,password=password)
-                print(user)
                 if user is not None:
                     auth.login(request,user)
                     return redirect('/')

@@ -68,10 +68,10 @@ WSGI_APPLICATION = 'shophub.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'shophub_database' ,
-        'USER' : 'shophub',
-        'PASSWORD':'root',
-        'HOST':'localhost',
+        'NAME': 'shophub' ,
+        'USER' : 'postgres',
+        'PASSWORD':'physically11',
+        'HOST':'database-1.clgyw7zhaltp.us-east-1.rds.amazonaws.com',
         'PORT':'5432'
     }
 }
